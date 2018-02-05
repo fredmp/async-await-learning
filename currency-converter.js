@@ -1,14 +1,6 @@
-// USD CAD 20
-// 24 USD is worth 28 CAD. You can spend this amount in the countries below.
-
 const axios = require('axios');
 
 const getExchangeRate = async (from, to) => {
-  // return axios.get(`https://api.fixer.io/latest?base=${from}&symbols=${to}`)
-  //   .then(response => {
-  //     return response.data.rates[to];
-  //   });
-
   try {
     const response = await axios.get(`https://api.fixer.io/latest?base=${from}&symbols=${to}`);
     const rate = response.data.rates[to];
@@ -20,11 +12,6 @@ const getExchangeRate = async (from, to) => {
 };
 
 const getCountries = async currencyCode => {
-  // return axios.get(`https://restcountries.eu/rest/v2/currency/${currencyCode}`)
-  //   .then(response => {
-  //     return response.data.map(country => country.name);
-  //   });
-
   try {
     const response = await axios.get(`https://restcountries.eu/rest/v2/currency/${currencyCode}`);
     return response.data.map(country => country.name);
